@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Hello, World!"
+    return "IPL API"
 
 
 
@@ -37,8 +37,20 @@ def team_record():
     return response
     
     
+@app.route('/api/batting-record')
+def batting_record():
+    batsman_name = request.args.get('batsman')
     
+    response = pre_made.batsmanAPI(batsman_name)
+    return response
+
+
+@app.route('/api/bowling-record')
+def bowling_record():
+    bowler_name = request.args.get('bowler')
     
+    response = pre_made.bowlerAPI(bowler_name)
+    return response   
 
 
 
