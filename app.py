@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import ipl
+import pre_made
 
 
 app = Flask(__name__)
@@ -26,6 +27,18 @@ def teamvteam():
     
     response = ipl.teamVteamAPI(team1, team2)
     return jsonify(response)
+
+
+@app.route('/api/team-record')
+def team_record():
+    team_name = request.args.get('team')
+    
+    response = pre_made.teamAPI(team_name)
+    return response
+    
+    
+    
+    
 
 
 
